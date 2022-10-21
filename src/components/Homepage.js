@@ -21,19 +21,62 @@ const Homepage = () => {
 
     }, [])
 
+    const [profileData, setProfileData] = useState({});
+
+    useEffect(() => {
+        async function fetchUserInfo(event) {    
+            try {
+                const response = await fetch(
+                    "https://strangers-things.herokuapp.com/api/2209-ftb-mt-web-ft/users/me",
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${localStorage.getItem("token")}`
+                        },
+                    })
+                    
+                const data = await response.json();
+                setProfileData(data.data);
+            } catch(error) {
+                console.log(error);
+            }
+        }
+        fetchUserInfo();
+    }, []);
+
+    const [ loggedIn, setLoggedIn ] = useState(false);
+    useEffect(() => {
+        async function isLoggedIn(event) {    
+            try {
+                const response = await fetch(
+                    "https://strangers-things.herokuapp.com/api/2209-ftb-mt-web-ft/test/me",
+                    {
+                        method: "GET",
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem("token")}`
+                        }
+                    })
+                const data = await response.json();
+                setLoggedIn(data.success);
+            } catch(error) {
+                console.log(error);
+            }
+        }
+        isLoggedIn();
+    }, []);
+
     return (
         <div>
             <div className="header">
                 <h1 className="title">Stranger's Things</h1>
-                <Navbar />
+                <Navbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
             </div>
 
-
-            <Outlet context={posts}/>
-
+            <Outlet context={[posts, setPosts, profileData, setProfileData, loggedIn, setLoggedIn]}/>
         </div>
-
     )
+    
 }
 
 export default Homepage;

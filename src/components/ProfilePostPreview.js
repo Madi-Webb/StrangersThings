@@ -1,5 +1,5 @@
 import React from "react";
-import { useOutletContext } from "react-router-dom"; 
+import { useOutletContext, Link } from "react-router-dom"; 
 
 const ProfilePostPreview = (props) => {
     const postData = props;
@@ -11,7 +11,9 @@ const ProfilePostPreview = (props) => {
             <p>{postData.post.description}</p>
             <p><strong>Price: </strong>{postData.post.price}</p>
             <p><strong>Location: </strong>{postData.post.location}</p>
-            <button>Delete</button>
+            <div className="button-container">
+                <button className="see-more-btn"><Link to={`/profile/${postData.post._id}`}>More Details</Link></button>
+            </div>
         </div>
     )
 };

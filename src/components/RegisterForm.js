@@ -3,9 +3,12 @@ import React, { useState } from "react";
 const RegisterForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    // const [token, setToken] = useState("");
 
     async function formSubmitHandler(event) {
         event.preventDefault();
+
+        // TODO: provide feedback on the form if the user provides incorrect credentials, or bad usernames or passwords
 
         try {
             const response = await fetch(
@@ -25,7 +28,8 @@ const RegisterForm = () => {
             )
             const data = await response.json();
             console.log("This is our translated data: ", data);
-            localStorage.setItem("token", data.data.token)
+            setToken(data.data.token);
+            // localStorage.setItem("token", data.data.token)
         } catch(error) {
             console.log(error);
         }
@@ -51,6 +55,12 @@ const RegisterForm = () => {
                 <input type="text" value={password} onChange={updatePasswordState}></input>
 
                 <br/>
+
+                {/* TODO:  */}
+                {/* <label>Confirm Password</label>
+                <input type="text" value={password} onChange={updatePasswordState}></input>
+
+                <br/> */}
 
                 <button type="submit">Register For New Account</button>
             </form>

@@ -9,6 +9,8 @@ import AllPosts from "./components/AllPosts";
 import NewPost from "./components/NewPost";
 
 import Profile from "./components/Profile";
+import DetailedPostView from "./components/DetailedPostView";
+import Logout from "./components/Logout";
 
 const router = createBrowserRouter([
     {
@@ -29,8 +31,20 @@ const router = createBrowserRouter([
                 element: <Profile />
             },
             {
+                path: "/profile/:id",
+                element: <DetailedPostView />
+            },
+            {
+                path: "/profile/logout",
+                element: <Logout />
+            },
+            {
                 path: "/posts/add",
                 element: <NewPost />
+            },
+            {
+                path: "/posts/:id",
+                element: <DetailedPostView />
             }
         ]
     }

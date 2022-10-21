@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useOutletContext, useNavigate } from "react-router-dom";
+
 
 const NewPost = () => {
     const [title, setTitle] = useState("");
@@ -7,6 +9,8 @@ const NewPost = () => {
     const [location, setLocation] = useState("");
     const [willDeliver, setWillDeliver] = useState(false);
 
+    const [, setPosts, , setProfileData] = useOutletContext();
+    const navigate = useNavigate();
 
     async function formSubmitHandler(event) {
         event.preventDefault();
@@ -34,59 +38,47 @@ const NewPost = () => {
             const data = await response.json();
             console.log("This is our translated data after NEW POST: ", data);
 
+            const updatedPosts = await fetch("https://strangers-things.herokuapp.com/api/2209-ftb-mt-web-ft/posts")
+            const translatedUpdatedPosts = await updatedPosts.json();
+            console.log("translated updated post: ", translatedUpdatedPosts);
+            setPosts([...translatedUpdatedPosts.data.posts]);
+
+            // props.setProfileData([...translatedEditPosts.data.posts]);
+            // props.handleToggleEditForm();
+            navigate("/posts");
+
         } catch(error) {
             console.log(error);
         }
     }
 
-    function updateTitleState(event) {
-        setTitle(event.target.value);
-    }
-
-    function updateDescriptionState(event) {
-        setDescription(event.target.value);
-    }
-
-    function updatePriceState(event) {
-        setPrice(event.target.value);
-    }
-
-    function updateLocationState(event) {
-        setLocation(event.target.value);
-    }
-
-    function updateWillDeliverState(event) {
-        setWillDeliver(event.target.value);
-    }
-
 
     return (
-        <div>
-            <p>New Post page!!! {":)"}</p>
+        <div className='new-post'>
 
-            <form onSubmit={formSubmitHandler} className="login-form">
-                <label>Enter Title Here</label>
-                <input type="text" value={title} onChange={updateTitleState}></input>
-
-                <br/>
-
-                <label>Enter Description Here</label>
-                <input type="text" value={description} onChange={updateDescriptionState}></input>
+            <form onSubmit={formSubmitHandler} className="new-post-form">
+                <label>Title:</label>
+                <input type="text" value={title} onChange={(event) => setTitle(event.target.value)}></input>
 
                 <br/>
 
-                <label>Enter Price Here</label>
-                <input type="text" value={price} onChange={updatePriceState}></input>
+                <label>Description:</label>
+                <textarea type="text" value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
+
+                <br/>
+
+                <label>Price:</label>
+                <input type="text" value={price} onChange={(event) => setPrice(event.target.value)}></input>
 
                 <br/>
                 
-                <label>Enter Location Here</label>
-                <input type="text" value={location} onChange={updateLocationState}></input>
+                <label>Location:</label>
+                <input type="text" value={location} onChange={(event) => setLocation(event.target.value)}></input>
 
                 <br/>
 
-                <label>Enter Will Deliver Here</label>
-                <input type="checkbox" value={willDeliver} onChange={updateWillDeliverState}></input>
+                <label>Willing to Deliver? {"("}Check for yes{")"}</label>
+                <input type="checkbox" value={willDeliver} onChange={(event) => setWillDeliver(event.target.checked)}></input>
 
                 <br/>
 

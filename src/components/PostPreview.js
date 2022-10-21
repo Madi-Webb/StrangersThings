@@ -1,5 +1,5 @@
 import React from "react";
-import { useOutletContext } from "react-router-dom"; 
+import { useOutletContext, Link } from "react-router-dom"; 
 
 const PostPreview = (props) => {
     const postData = props;
@@ -12,7 +12,12 @@ const PostPreview = (props) => {
             <p><strong>Price: </strong>{postData.post.price}</p>
             <p><strong>Seller: </strong>{postData.post.author.username}</p>
             <p><strong>Location: </strong>{postData.post.location}</p>
-            <button className="send-msg-btn">Send message</button>
+            <p><strong>Messages: </strong>{postData.post.messages.length}</p>
+            <div className="button-container">
+                <button className="see-more-btn"><Link to={`/posts/${postData.post._id}`}>More Details</Link></button>
+                {/* <button className="send-msg-btn">Send message</button> */}
+            </div>
+
         </div>
     )
 };

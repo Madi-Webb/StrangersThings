@@ -6,15 +6,14 @@ import { Link } from "react-router-dom";
 import PostPreview from "./PostPreview";
 
 const AllPosts = () => {
-    const postsData = useOutletContext();
-    console.log("This is our postsData: ", postsData);
+    const [postsData] = useOutletContext();
 
     return (
         <div>
             <div className="posts-header">
                 <h1>Posts</h1>
                 <p>Search Posts</p>
-                <button><Link to="/posts/add">New Post</Link></button>
+                <button className="new-post-btn"><Link to="/posts/add">New Post</Link></button>
             </div>
 
             {
