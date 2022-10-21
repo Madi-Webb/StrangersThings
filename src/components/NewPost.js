@@ -6,7 +6,7 @@ const NewPost = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
-    const [location, setLocation] = useState("");
+    const [location, setLocation] = useState("[On Request]");
     const [willDeliver, setWillDeliver] = useState(false);
 
     const [, setPosts, , setProfileData] = useOutletContext();
@@ -36,15 +36,24 @@ const NewPost = () => {
                 }
             )
             const data = await response.json();
-            console.log("This is our translated data after NEW POST: ", data);
+            // console.log("NEW POST DATA: ", data);
 
             const updatedPosts = await fetch("https://strangers-things.herokuapp.com/api/2209-ftb-mt-web-ft/posts")
             const translatedUpdatedPosts = await updatedPosts.json();
-            console.log("translated updated post: ", translatedUpdatedPosts);
             setPosts([...translatedUpdatedPosts.data.posts]);
 
-            // props.setProfileData([...translatedEditPosts.data.posts]);
-            // props.handleToggleEditForm();
+            const updatedUser = await fetch(
+                "https://strangers-things.herokuapp.com/api/2209-ftb-mt-web-ft/users/me",
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`
+                    },
+                }
+            )
+                
+            const translatedUpdatedUser = await updatedUser.json();
+            setProfileData(translatedUpdatedUser.data);
             navigate("/posts");
 
         } catch(error) {

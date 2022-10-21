@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import { useOutletContext } from "react-router-dom";
-
+import { Link, useOutletContext } from "react-router-dom";
 
 
 const LoginForm = () => {
     const [,, profileData, setProfileData, loggedIn, setLoggedIn] = useOutletContext();
-    console.log("This is our profileData on LOGIN: ", profileData);
-
+    // console.log("profileData on LOGIN: ", profileData);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [token, setToken] = useState("");
-
 
     async function formSubmitHandler(event) {
         event.preventDefault();
@@ -36,9 +32,7 @@ const LoginForm = () => {
             console.log("This is our translated data: ", data);
             if (data.success) {
                 setLoggedIn(data.success);
-                console.log("successful login");
-                console.log("This is our token: ", data.data.token);
-                setToken(data.data.token);
+                // setToken(data.data.token);
                 localStorage.setItem("token", data.data.token);
                 fetchUserInfo();
             }
@@ -61,36 +55,30 @@ const LoginForm = () => {
             const data = await response.json();
             console.log("User profile data: ", data.data);
             setProfileData(data.data);
-            // setPosts(data.data.posts);
         } catch(error) {
             console.log(error);
         }
     }
 
 
-    function updateUsernameState(event) {
-        setUsername(event.target.value);
-    }
-
-    function updatePasswordState(event) {
-        setPassword(event.target.value);
-    }
-
     return (
         <div>
             <form onSubmit={formSubmitHandler} className="login-form">
                 <label>Enter Username Here</label>
-                <input type="text" value={username} onChange={updateUsernameState}></input>
+                <input type="text" value={username} onChange={(event) => setUsername(event.target.value)}></input>
 
                 <br/>
 
                 <label>Enter Password Here</label>
-                <input type="text" value={password} onChange={updatePasswordState}></input>
+                <input type="text" value={password} onChange={(event) => setPassword(event.target.value)}></input>
 
                 <br/>
 
                 <button type="submit">Login</button>
             </form>
+            <div className="centered">
+                <Link to="/profile/register">No account? Click here to sign up</Link>
+            </div>
         </div>
     )
 }

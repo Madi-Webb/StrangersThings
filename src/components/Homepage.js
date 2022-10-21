@@ -5,23 +5,21 @@ import Navbar from "./Navbar";
 
 const Homepage = () => {
     const [posts, setPosts] = useState([]);
+    const [profileData, setProfileData] = useState({});
+    const [ loggedIn, setLoggedIn ] = useState(false);
 
     useEffect(() => {
         async function fetchThingsData() {
             try {
                 const response = await fetch('https://strangers-things.herokuapp.com/api/2209-FTB-MT-WEB-FT/posts');
                 const results = await response.json();
-                // console.log(results);
                 setPosts(results.data.posts);
             } catch (error) {
                 console.log(error);
             }
         }
         fetchThingsData();
-
     }, [])
-
-    const [profileData, setProfileData] = useState({});
 
     useEffect(() => {
         async function fetchUserInfo(event) {    
@@ -44,7 +42,6 @@ const Homepage = () => {
         fetchUserInfo();
     }, []);
 
-    const [ loggedIn, setLoggedIn ] = useState(false);
     useEffect(() => {
         async function isLoggedIn(event) {    
             try {
@@ -66,6 +63,7 @@ const Homepage = () => {
         isLoggedIn();
     }, []);
 
+    
     return (
         <div>
             <div className="header">

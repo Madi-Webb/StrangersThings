@@ -3,8 +3,9 @@ import { useOutletContext, Link } from "react-router-dom";
 
 const ProfilePostPreview = (props) => {
     const postData = props;
-    console.log("individual post: ", postData);
+    // console.log("individual post: ", postData);
 
+    
     return (
         <div className="post-preview">
             <h2>{postData.post.title}</h2>

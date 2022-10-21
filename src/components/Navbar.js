@@ -12,7 +12,6 @@ const Navbar = (props) => {
             {
                 props.loggedIn ? <Link to="profile/logout">Logout</Link> : <Link to="profile">Login</Link>
             }
-
         </nav>
     )
 };

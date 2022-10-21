@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    // const [token, setToken] = useState("");
+    const navigate = useNavigate();
 
     async function formSubmitHandler(event) {
         event.preventDefault();
@@ -27,32 +28,24 @@ const RegisterForm = () => {
                 }
             )
             const data = await response.json();
-            console.log("This is our translated data: ", data);
-            setToken(data.data.token);
-            // localStorage.setItem("token", data.data.token)
+            // console.log("register data:", data);
+            navigate("/profile");
         } catch(error) {
             console.log(error);
         }
     }
 
-    function updateUsernameState(event) {
-        setUsername(event.target.value);
-    }
-
-    function updatePasswordState(event) {
-        setPassword(event.target.value);
-    }
-
+    
     return (
         <div>
-            <form onSubmit={formSubmitHandler}>
+            <form className="login-form" onSubmit={formSubmitHandler}>
                 <label>Enter New Username Here</label>
-                <input type="text" value={username} onChange={updateUsernameState}></input>
+                <input type="text" value={username} onChange={(event) => setUsername(event.target.value)}></input>
 
                 <br/>
 
                 <label>Enter New Password Here</label>
-                <input type="text" value={password} onChange={updatePasswordState}></input>
+                <input type="text" value={password} onChange={(event) => setPassword(event.target.value)}></input>
 
                 <br/>
 

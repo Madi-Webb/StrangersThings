@@ -31,7 +31,7 @@ const EditPost = (props) => {
                 })
             })
             const data = await response.json();
-            console.log("HandledEditPost translated data ", data);
+            // console.log("HandledEditPost translated data ", data);
 
             const userData = await fetch(
                 "https://strangers-things.herokuapp.com/api/2209-ftb-mt-web-ft/users/me",
@@ -42,11 +42,7 @@ const EditPost = (props) => {
                     },
                 })
             const translatedUserData = await userData.json();
-            console.log("translated user data: ", translatedUserData);
             props.setProfileData(translatedUserData.data);
-
-            // props.setProfileData([...translatedEditPosts.data.posts]);
-            // props.handleToggleEditForm();
             navigate("/profile");
 
         } catch(error) {
@@ -55,17 +51,16 @@ const EditPost = (props) => {
     }
 
 
-
     return (
-        <div>
-            <h1>EDIT POST PAGE!</h1>
-            <form onSubmit={handleEditPost}>
+        <div className="new-post">
+            <h2>Editing Post...</h2>
+            <form className="new-post-form" onSubmit={handleEditPost}>
                 <label>Edit Title</label>
                 <input type="text" value={title} onChange={(event) => setTitle(event.target.value)}></input>
                 <br />
 
                 <label>Edit Description</label>
-                <input type="text" value={description} onChange={(event) => setDescription(event.target.value)}></input>
+                <textarea type="text" value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
                 <br />
 
                 <label>Edit Price</label>
@@ -77,7 +72,7 @@ const EditPost = (props) => {
                 <br />
 
                 <label>Edit Willingness to Deliver</label>
-                <input type="checkbox" value={willDeliver} onChange={(event) => setWillDeliver(event.target.value)}></input>
+                <input type="checkbox" value={willDeliver} onChange={(event) => setWillDeliver(event.target.value)} defaultChecked={willDeliver}></input>
                 <br />
 
                 <button type="submit">Submit</button>

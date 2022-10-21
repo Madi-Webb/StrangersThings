@@ -7,10 +7,10 @@ import ErrorPage from "./components/ErrorPage";
 import Index from "./components/Index"
 import AllPosts from "./components/AllPosts";
 import NewPost from "./components/NewPost";
-
 import Profile from "./components/Profile";
 import DetailedPostView from "./components/DetailedPostView";
 import Logout from "./components/Logout";
+import RegisterForm from "./components/RegisterForm";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +27,14 @@ const router = createBrowserRouter([
                 element: <AllPosts />,
             },
             {
+                path: "/posts/add",
+                element: <NewPost />
+            },
+            {
+                path: "/posts/:id",
+                element: <DetailedPostView />
+            },
+            {
                 path: "/profile",
                 element: <Profile />
             },
@@ -39,12 +47,8 @@ const router = createBrowserRouter([
                 element: <Logout />
             },
             {
-                path: "/posts/add",
-                element: <NewPost />
-            },
-            {
-                path: "/posts/:id",
-                element: <DetailedPostView />
+                path: "/profile/register",
+                element: <RegisterForm />
             }
         ]
     }

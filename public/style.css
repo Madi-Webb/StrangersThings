@@ -5,13 +5,18 @@ body {
     font-family: Helvetica, sans-serif;
 }
 
+.vert-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .header {
     display: flex;
     background-color: #70587C;
     justify-content: space-between;
     align-items: center;
     padding-left: 10px;
-
     border: 2px solid #614C6B;
     border-radius: 5px;
     box-shadow: 2px 2px 5px #56445F;
@@ -23,7 +28,6 @@ body {
     margin: 10px 5px;
     font-family: 'Righteous', cursive;
     font-size: 28pt;
-    /* background-color: blue; */
 }
 
 .navbar {
@@ -31,10 +35,7 @@ body {
     gap: 30px;
     margin: 10px 5px;
     padding: 10px 20px;
-
     font-size: 14pt;
-
-    /* background-color: red; */
 }
 
 .posts-header {
@@ -42,15 +43,12 @@ body {
     align-items: center;
     justify-content: space-between;
     margin: 10px 5px;
-
-
 }
 
 .post-preview {
     background-color: white;
     margin: 10px 5px;
     padding: 10px 25px;
-
     border: 2px solid lavender;
     border-radius: 10px;
     box-shadow: 2px 2px 5px #D1D1EA;
@@ -88,6 +86,10 @@ body {
     text-align: center;
 }
 
+.middle {
+    margin: auto;
+}
+
 .big {
     font-size: 48pt;
 }
@@ -95,11 +97,9 @@ body {
 .login-form {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-
+    margin: auto;
     width: 250px;
     padding: 10px 25px;
-
     border: 2px solid lavender;
     border-radius: 10px;
     box-shadow: 2px 2px 5px #D1D1EA;
@@ -115,10 +115,8 @@ body {
 .new-post-form {
     display: flex;
     flex-direction: column;
-  /* align-items: center; */
     width: 450px;
     padding: 10px 25px;
-    
     border: 2px solid lavender;
     border-radius: 10px;
     box-shadow: 2px 2px 5px #D1D1EA;
@@ -127,7 +125,6 @@ body {
 .detailed-post {
     padding: 10px 25px;
     background-color: white;
-    
     border: 2px solid lavender;
     border-radius: 5px;    
 }
@@ -139,25 +136,19 @@ body {
 
 .edit-button {
     background-color: whitesmoke;
-    
     border: 2px solid lavender;
     border-radius: 5px;
-
     padding: 2px 10px;
     margin-bottom: 10px;
-
     font-size: 14pt;
 }
 
 .delete-button {
     background-color: whitesmoke;
-    
     border: 2px solid red;
     border-radius: 5px;
-
     padding: 2px 10px;
     margin-bottom: 10px;
     margin-left: 10px;
-
     font-size: 14pt;
 }

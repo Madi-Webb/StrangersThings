@@ -2,18 +2,23 @@ import { useEffect, useState } from "react";
 import { useOutletContext, useParams, useNavigate } from "react-router-dom";
 import EditPost from "./EditPost";
 import Message from "./Message";
+import MessageForm from "./MessageForm";
 
 const DetailedPostView = () => {
-    const [posts,, profileData, setProfileData] = useOutletContext();
+    const [posts,, profileData, setProfileData, loggedIn] = useOutletContext();
     const [detailedPost, setDetailedPost] = useState({});
     const [toggleEditForm, setToggleEditForm] = useState(false);
+    const [toggleMessageForm, setToggleMessageForm] = useState(false);
     const { id } = useParams();
-    // console.log("posts", posts);
-    // console.log("profileData", profileData);
+
     const navigate = useNavigate();
 
     function handleToggleEditForm() {
         setToggleEditForm(!toggleEditForm);
+    }
+
+    function handleToggleMessageForm() {
+        setToggleMessageForm(!toggleMessageForm);
     }
 
     async function deletePost(event) {
@@ -31,7 +36,7 @@ const DetailedPostView = () => {
                 }
             )
             const data = await response.json();
-            console.log("DELETED DATA: ", data);
+            // console.log("DELETE DATA: ", data);
 
             const userData = await fetch(
                 "https://strangers-things.herokuapp.com/api/2209-ftb-mt-web-ft/users/me",
@@ -42,7 +47,6 @@ const DetailedPostView = () => {
                     },
                 })
             const translatedUserData = await userData.json();
-            console.log("translated user data: ", translatedUserData);
             setProfileData(translatedUserData.data);
             navigate("/profile");
 
@@ -51,18 +55,20 @@ const DetailedPostView = () => {
         }
     }
 
-    useEffect(() => {
-        async function findSpecificPost() {
-            try {
-                const [specificPost] = await posts.filter((element) => element._id == id);
-                setDetailedPost(specificPost);
-                console.log("detailed post", specificPost);
-            } catch(error) {
-                console.log(error);
-            }
+    async function findSpecificPost() {
+        try {
+            const [specificPost] = await posts.filter((element) => element._id == id);
+            setDetailedPost(specificPost);
+            // console.log("detailed post", specificPost);
+        } catch(error) {
+            console.log(error);
         }
+    }
+
+    useEffect(() => {
         findSpecificPost();
     }, []);
+
 
     return (
         <div>
@@ -72,30 +78,39 @@ const DetailedPostView = () => {
                 {
                     detailedPost.title ?
                     <div>
-                        <div className="detailed-post"> {/* Post Details */}
+                        <div className="detailed-post">
                             <h2>{detailedPost.title}</h2>
                             <p>{detailedPost.description}</p>
                             <h4>Price: {detailedPost.price}</h4>
                             <h5>Location: {detailedPost.location}</h5>
                             <h5>Willing to Deliver? {detailedPost.willDeliver ? ("Yes") : ("No")}</h5>
-                            { detailedPost.author._id == profileData._id ? 
-                                <div className="button-container">
-                                    <button className="edit-button" onClick={handleToggleEditForm}>EDIT</button>
-                                    <button className="delete-button" onClick={deletePost}>DELETE</button>
-                                </div>
-                            :
-                                <div className="button-container">
-                                    <button className="send-msg-btn" onClick={() => console.log("clicked")}>Send Message</button>
-                                </div>
+                            
+                            { loggedIn ?
+                                ( detailedPost.author._id == profileData._id ? 
+                                    <div className="button-container">
+                                        <button className="edit-button" onClick={handleToggleEditForm}>EDIT</button>
+                                        <button className="delete-button" onClick={deletePost}>DELETE</button>
+                                    </div>
+                                :
+                                    <div className="button-container">
+                                        <button className="send-msg-btn" onClick={handleToggleMessageForm}>Send Message</button>
+                                    </div>
+                                )
+                            : 
+                            <div className="button-container">
+                                <button className="send-msg-btn" onClick={() => navigate("/profile")}>Log in to message seller</button>
+                            </div>
                             }
                         </div>
+
+                        { toggleMessageForm ? <MessageForm indivPost={detailedPost} handleToggleMessageForm={handleToggleMessageForm} setDetailedPost={setDetailedPost} findSpecificPost={findSpecificPost}/> : null }
                         
                         <div>
-                            <h3>Messages:</h3> {/* Post Messages */}
+                            <h3>Messages:</h3>
                             {
-                                detailedPost.messages.length ? detailedPost.messages.map((msg, idx) => {
-                                    return <Message key={idx} msg={msg} />
-                                }) : <p>This post has no messages</p>
+                                profileData.messages.length ? profileData.messages.map((msg, idx) => {
+                                    return (msg.post._id == detailedPost._id ? <Message key={idx} msg={msg}/> : null)
+                                }) : <p>No messages to display</p>
                             }
                         </div>
                     </div>
@@ -103,10 +118,8 @@ const DetailedPostView = () => {
                 }
 
             </div>
-
         </div>
     )
-
 
 }
 
