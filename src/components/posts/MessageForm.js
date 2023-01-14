@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useOutletContext, useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 import { FiSend } from 'react-icons/fi';
 
@@ -22,8 +22,8 @@ const MessageForm = ({ detailedPost, handleToggleMessageForm, setProfileData }) 
         if (messageData.success) {
             const userFetchData = await usersMeFetch();
             if (userFetchData._id) {
-                console.log("setting profile data", userFetchData);
-                await setProfileData(userFetchData.data);
+                // console.log("setting profile data", userFetchData);
+                await setProfileData(userFetchData);
                 handleToggleMessageForm();
                 // TODO: make messages show up automatically 
             }

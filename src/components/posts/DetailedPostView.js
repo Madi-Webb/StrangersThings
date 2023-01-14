@@ -47,7 +47,7 @@ const DetailedPostView = () => {
         let createdDateString = '';
         let updatedDateString = '';
 
-        const createdDateObj = new Date(detailedPost.createdAt);
+        const createdDateObj = new Date(detailedPost.createdAt); // TODO: fix this error - Cannot read properties of undefined (reading 'createdAt') async issue with detailedPost?
         const updatedDateObj = new Date(detailedPost.updatedAt);
 
         createdDateString = createdDateObj.toDateString() + " (" + createdDateObj.toTimeString().slice(0, 8) + ")";
@@ -119,7 +119,7 @@ const DetailedPostView = () => {
                                     )
                                 : 
                                 <div className="button-container">
-                                    <button className="send-msg-btn" onClick={() => navigate("/profile")}>Log in to message seller</button>
+                                    <button className="new-message-button" onClick={() => navigate("/profile")}>Log in to message seller</button>
                                 </div>
                                 }
                             </div>
