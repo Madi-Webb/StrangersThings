@@ -1,0 +1,515 @@
+
+/* Posts CSS */
+
+
+/* ALL POSTS */
+
+.posts-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    height: 75%;
+
+    position: fixed;    /* border: 2px solid hotpink; */
+    /* background-color: aquamarine; */
+}
+
+.posts-header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 10px 5px;
+    text-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.search-form input {
+    border-style: none;
+    outline: none;
+    font-family: 'Stranger Things', sans-serif;
+    font-size: large;
+    background-color: rgba(0, 0, 0, 0);
+    color: #e4ebf2;
+}
+
+.search-icon {
+    color: #e4ebf2;
+    padding-right: 5px;
+}
+
+.no-posts-msg {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 624px;
+    padding: 20px;
+    color: #ed2b12;
+    /* text-shadow: 2px 2px 5px #630100; */
+    text-shadow: 
+    0 0 1px #630100,
+    0 0 3px #630100,
+    0 0 10px #450100;
+    font-size: 24pt;
+}
+
+.posts-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    overflow-y: scroll;
+}
+
+.posts-box::-webkit-scrollbar {
+    width: 1em;
+}
+
+.posts-box::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.posts-box::-webkit-scrollbar-thumb {
+    background-color: rgba(24, 104, 159, 0.5);
+    /* outline: 1px solid rgb(24, 104, 159, 0.85); */
+    border-radius: 5px;
+}
+
+
+/* POST PREVIEW */
+
+.post-preview {
+    width: 600px;
+    background-color: rgba(228, 235, 242, 0.75);
+    margin: 10px 5px;
+    padding: 10px 25px;
+    border: 2px solid #e4ebf2;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.post-title {
+    font-size: 24pt;
+    text-shadow: 
+    0 0 1px #630100,
+    0 0 3px #630100,
+    0 0 10px #450100;
+}
+
+.bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    /* background-color: salmon; */
+}
+
+.price {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgba(24, 104, 159, 0.5);
+    border-radius: 5px;
+    font-size: 14pt;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(24, 104, 159, 0.5);
+    border-radius: 5px;
+    font-size: 14pt;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.details-btn {
+    background-color: rgba(80, 92, 100, 0.25);
+    border: 2px solid #505c64;
+    border-radius: 5px;
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.details-link {
+    text-decoration: none;
+    color: #0f3555;
+}
+
+
+/* DETAILED POST */
+
+.detailed-post {
+    width: 600px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 10px 5px;
+    padding: 10px 25px;
+    /* border: 2px solid; */
+    border-radius: 10px;
+    color: #e4ebf2;
+    box-shadow: 2px 2px 5px #0f3555;
+}
+
+.detailed-post .details {
+    background-color: rgba(228, 235, 242, 0.75);
+    padding: 10px;
+    border: 2px solid #e4ebf2;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.date-container {
+    display: flex;
+    flex-direction: column;
+    font-size: 11pt;
+
+}
+
+
+/* MESSAGES */
+
+.new-message-button {
+    padding: 2px 10px;
+    background-color: rgba(80, 92, 100, 0.6);
+    border: 2px solid #505c64;
+    color: #6d9cbf;
+    border-radius: 5px;
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    font-size: 14pt;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.new-message-form {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    padding: 10px 25px;
+    margin: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    color: #e4ebf2;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.new-message-form .content-input {
+    border: 2px solid;
+    border-radius: 5px;
+    min-height: 100px;
+    margin-top: 5px;
+    padding: 5px;
+    outline: none;
+    font-family: 'Stranger Things', sans-serif;
+    font-size: large;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #e4ebf2;
+}
+
+.send-message-button {
+    margin: auto;
+    padding: 5px 10px;
+    border: 2px solid;
+    border-radius: 5px;
+    font-size: 14pt;
+    cursor: pointer;
+    background-color: rgba(109, 156, 191, 0.5);
+    color: black;
+    text-shadow: 
+    0 0 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 
+    0 0 1px rgba(0, 0, 0, 0.5),
+    0 0 3px rgba(0, 0, 0, 0.75),
+    0 0 5px rgb(0, 0, 0, 0.25),
+}
+
+.message-preview {
+    width: 450px;
+    background-color: rgba(228, 235, 242, 0.75);
+    margin: 10px 5px;
+    padding: 10px 25px;
+    border: 2px solid #e4ebf2;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.profile-message-preview {
+    width: 400px;
+    background-color: rgba(228, 235, 242, 0.75);
+    margin: 10px 5px;
+    padding: 10px 25px;
+    border: 2px solid #e4ebf2;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.message-sender {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.message-content {
+    margin-top: 15px;
+}
+
+.message-title {
+    font-size: 14pt;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    text-shadow: 
+    0 0 1px #630100,
+    0 0 3px #450100;
+}
+
+
+/* NEW POST */
+
+.new-post-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    font-size: 14pt;
+    color: #ed2b12;
+    /* text-shadow: 2px 2px 5px #630100; */
+    box-shadow: 
+    0 0 1px #630100,
+    0 0 3px #630100,
+    0 0 10px #450100;
+}
+
+.new-post-link {
+    text-decoration: none;
+    color: #ed2b12;
+    /* text-shadow: 2px 2px 5px #630100; */
+    text-shadow: 
+    0 0 1px #630100,
+    0 0 3px #630100,
+    0 0 10px #450100;
+}
+
+
+.new-post-form {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    padding: 10px 25px;
+    margin: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    color: #e4ebf2;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.new-post-form input {
+    border: 2px solid;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+    font-family: 'Stranger Things', sans-serif;
+    font-size: large;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #e4ebf2;
+}
+
+.new-post-form .title-input {
+    font-size: 18pt;
+}
+
+.new-post-form .description-input {
+    border: 2px solid;
+    border-radius: 5px;
+    min-height: 100px;
+    padding: 5px;
+    outline: none;
+    font-family: 'Stranger Things', sans-serif;
+    font-size: large;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #e4ebf2;
+}
+
+/* Scrollbar */
+.new-post-form .description-input::-webkit-scrollbar {
+    width: 0.65em;
+}
+
+.new-post-form .description-input::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.new-post-form .description-input::-webkit-scrollbar-thumb {
+    background-color: rgba(228, 235, 242);
+    border-radius: 5px;
+}
+
+/* Checkbox */
+/* Customize the label (the container) */
+.new-post-form .delivery-input {
+    align-self: center;
+    display: block;    
+    position: relative;
+    padding-left: 35px;
+    padding-top: 5px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.new-post-form .delivery-input input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border-radius: 5px;
+    background-color: rgba(228, 235, 242, 0.75);
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+/* On mouse-over, add a grey background color */
+.new-post-form .delivery-input:hover input ~ .checkmark {
+    background-color: #bfcce0;
+}
+
+/* When the checkbox is checked, add a blue background */
+.new-post-form .delivery-input  input:checked ~ .checkmark {
+    background-color: #6d9cbf;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.new-post-form .delivery-input  input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.new-post-form .delivery-input  .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #ed2b12;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+/* EDIT AND DELETE POST */
+
+.edit-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-button-container {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.edit-button {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 2px solid;
+    background-color: rgba(228, 235, 242, 0.25);
+    color: #ed2b12;
+    font-size: 14pt;
+    font-weight: bold;
+    box-shadow: 
+    0 0 1px #630100,
+    0 0 3px #630100,
+    0 0 10px #450100;
+    cursor: pointer;
+}
+
+.delete-button {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    border: 2px solid;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ed2b12;
+    font-size: 12pt;
+    box-shadow: 
+    0 0 1px #630100,
+    0 0 3px #630100,
+    0 0 10px #450100;
+    cursor: pointer;
+}
+
+.save-post-button {
+    padding: 5px;
+    border: 2px solid;
+    border-radius: 5px;
+    font-size: 14pt;
+    cursor: pointer;
+    background-color: rgba(109, 156, 191, 0.5);
+    color: black;
+    text-shadow: 
+    0 0 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 
+    0 0 1px rgba(0, 0, 0, 0.5),
+    0 0 3px rgba(0, 0, 0, 0.75),
+    0 0 5px rgb(0, 0, 0, 0.25),
+}

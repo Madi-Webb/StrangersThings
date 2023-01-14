@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useOutletContext, useNavigate } from "react-router-dom";
 
 
 const NewPost = () => {
+
+    const { setPosts, setProfileData } = useOutletContext();
+
+    const navigate = useNavigate();
+
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [location, setLocation] = useState("[On Request]");
     const [willDeliver, setWillDeliver] = useState(false);
 
-    const [, setPosts, , setProfileData] = useOutletContext();
-    const navigate = useNavigate();
-
+    // TODO: move to api folder
     async function formSubmitHandler(event) {
         event.preventDefault();
 
@@ -63,16 +66,16 @@ const NewPost = () => {
 
 
     return (
-        <div className='new-post'>
+        <div className='vert-center-container'>
 
             <form onSubmit={formSubmitHandler} className="new-post-form">
                 <label>Title:</label>
-                <input type="text" value={title} onChange={(event) => setTitle(event.target.value)}></input>
+                <input type="text" className='title-input' value={title} onChange={(event) => setTitle(event.target.value)}></input>
 
                 <br/>
 
                 <label>Description:</label>
-                <textarea type="text" value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
+                <textarea type="text" className='description-input' value={description} onChange={(event) => setDescription(event.target.value)}></textarea>
 
                 <br/>
 
@@ -86,12 +89,14 @@ const NewPost = () => {
 
                 <br/>
 
-                <label>Willing to Deliver? {"("}Check for yes{")"}</label>
-                <input type="checkbox" value={willDeliver} onChange={(event) => setWillDeliver(event.target.checked)}></input>
+                <label className='delivery-input'>Willing to Deliver? {"("}Check for yes{")"}
+                    <input type="checkbox" value={willDeliver} onChange={(event) => setWillDeliver(event.target.checked)}></input>
+                    <span className='checkmark'></span>
+                </label>
 
                 <br/>
 
-                <button type="submit">POST</button>
+                <button type="submit" className='login-button'>POST</button>
             </form>
 
         </div>

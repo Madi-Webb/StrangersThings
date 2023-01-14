@@ -2,25 +2,25 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Homepage from "./components/Homepage";
-import ErrorPage from "./components/ErrorPage";
-import Index from "./components/Index"
-import AllPosts from "./components/AllPosts";
-import NewPost from "./components/NewPost";
-import Profile from "./components/Profile";
-import DetailedPostView from "./components/DetailedPostView";
-import Logout from "./components/Logout";
-import RegisterForm from "./components/RegisterForm";
+import App from "./components/general/App";
+import ErrorPage from "./components/general/ErrorPage";
+import Home from "./components/general/Home"
+import AllPosts from "./components/posts/AllPosts";
+import NewPost from "./components/posts/NewPost";
+import Profile from "./components/profile/Profile";
+import DetailedPostView from "./components/posts/DetailedPostView";
+import RegisterForm from "./components/profile/RegisterForm";
+
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Homepage />,
+        element: <App />,
         errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
-                element: <Index />
+                element: <Home />
             },
             {
                 path: "/posts",
@@ -43,16 +43,12 @@ const router = createBrowserRouter([
                 element: <DetailedPostView />
             },
             {
-                path: "/profile/logout",
-                element: <Logout />
-            },
-            {
                 path: "/profile/register",
                 element: <RegisterForm />
             }
         ]
     }
-])
+]);
 
 const root = createRoot( document.getElementById("app"));
 root.render( <RouterProvider router={router} /> );
