@@ -89,3 +89,12 @@
 .register-link {
     color: #e4ebf2;
 }
+
+.error {
+    display: flex;
+    align-items: center;
+    color: #ed2b12;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 5px;
+}

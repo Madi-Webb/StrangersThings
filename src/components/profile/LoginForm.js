@@ -73,7 +73,6 @@ const LoginForm = () => {
             {
                 errorMessage ? <p className='error'><BiErrorCircle />{errorMessage}</p> : null
             }
-
         </div>
     )
 };

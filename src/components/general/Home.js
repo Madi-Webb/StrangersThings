@@ -14,7 +14,7 @@ const Home = () => {
             <div className="homepage-welcome">Welcome to</div>
             <Logo />
             <div className="homepage-link">
-                <div className="homepage-question" onClick={() => navigate("/posts")}>What will you find here?</div>
+                <div className="homepage-question" onClick={() => navigate("/posts")}>What are you looking for?</div>
                 <IoFlashlightSharp className='flashlight-icon'/>
             </div>
         </div>
