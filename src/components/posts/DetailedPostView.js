@@ -16,6 +16,7 @@ const DetailedPostView = () => {
 
     const { id } = useParams();
     const [ detailedPost, setDetailedPost ] = useState();
+    const [ messages, setMessages ] = useState([]);
 
     const [ createdDate, setCreatedDate ] = useState("");
     const [ updatedDate, setUpdatedDate ] = useState("");
@@ -36,6 +37,8 @@ const DetailedPostView = () => {
         try {
             const [specificPost] = await posts.filter((post) => post._id == id);
             setDetailedPost(specificPost);
+            const specificPostMessages = await profileData.messages.filter((message) => message.post._id == specificPost._id);
+            setMessages(specificPostMessages);
             await convertDates();
         } catch(error) {
             console.log(error);
@@ -132,11 +135,16 @@ const DetailedPostView = () => {
                         { toggleMessageForm ? <MessageForm detailedPost={detailedPost} setProfileData={setProfileData} handleToggleMessageForm={handleToggleMessageForm} /> : null }
                         
                         <div>
-                            <h3 className="messages-title">Messages:</h3>
                             {
-                                profileData && profileData.messages.length ? profileData.messages.map((message, idx) => {
-                                    return (message.post._id == detailedPost._id ? <MessagePreview key={idx} message={message}/> : <p className="no-messages" key={idx}>You have not sent any messages.</p>)
-                                }) : <p className="no-messages">No messages to display</p>
+                                profileData ? 
+                                <div>
+                                    <h3 className="messages-title">Messages:</h3>
+                                    {
+                                        messages.length ? messages.map((message, idx) => {
+                                            return <MessagePreview key={idx} message={message}/>})
+                                        : <p className="no-messages">You have not messaged this seller</p>
+                                    }
+                                </div> : null
                             }
                         </div>
                     </div>
