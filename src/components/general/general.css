@@ -5,8 +5,11 @@
 /* General CSS */
 
 body {
-    background-image: url('https://wallpapercave.com/wp/wp11252503.jpg');
+    background: url('https://i.imgur.com/KnG7BNm.jpg') repeat-y;
     font-family: Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .clickable {
@@ -77,6 +80,7 @@ body {
 /* HEADER AND NAVBAR */
 
 .header-container {
+    width: 100vw;
     display: grid;
     grid-template-columns: [first] 80px [middle] auto [last] 80px [end];
     grid-template-rows: [top] auto [bottom];  
@@ -125,6 +129,7 @@ header {
 }
 
 .title {
+    text-align: center;
     margin: 10px 5px;
     font-family: 'Stranger Things', sans-serif;
     font-size: 28pt;
@@ -138,7 +143,6 @@ nav {
     display: flex;
     gap: 30px;
     margin: 10px 5px;
-    padding: 10px 20px;
     font-size: 14pt;
 }
 
@@ -215,9 +219,8 @@ nav {
     src: url("//db.onlinewebfonts.com/t/e2512011e386fd15a226cc2f37c7e092.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/e2512011e386fd15a226cc2f37c7e092.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/e2512011e386fd15a226cc2f37c7e092.woff") format("woff"), url("//db.onlinewebfonts.com/t/e2512011e386fd15a226cc2f37c7e092.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/e2512011e386fd15a226cc2f37c7e092.svg#BenguiatITCW01-BookCnIt") format("svg");
 }
 
-/* shoutout Edelstone: https://codepen.io/edelstone/pen/NrJqZY */
+/* modified from: https://codepen.io/edelstone/pen/NrJqZY */
 .st {
-    /* width: 625px; */
     width: 682px;
     margin: 6rem auto 3rem auto;
     text-align: center;
@@ -252,9 +255,7 @@ nav {
     width: 100%;
     margin: auto;
     margin-bottom: -1.2rem;
-    /* max-width: 612px; */
     margin-left: 5px;
-    /* background-color: aqua; */
 }
 
 .st-bound-mini {
@@ -273,6 +274,11 @@ nav {
     width: 130px;
     left: 0.3rem;
     position: relative;
+}
+
+.st-top {
+    width: 100%;
+    /* background-color: aqua; */
 }
 
 .st-bottom {
@@ -322,4 +328,108 @@ nav {
 
 .st-things-g {
     letter-spacing: -3px;
+}
+
+/* st logo conditional sizing */
+
+@media screen and (max-width:700px) {
+    .header-container {
+        grid-template-columns: [first] 40px [middle] auto [last] 40px [end];
+    }
+    .st {
+        width: 430px!important;
+        font-size: 5rem;
+        /* border: 1px solid plum; */
+    }
+    .st-bottom {
+        top: -2.75rem;
+    }
+    .st-drop {
+        top: 1.55rem;
+    }
+    .st-bound-mini {
+        margin-top: 0.5rem;
+    }
+    .st-bound-full {
+        margin-bottom: -0.9rem;
+    }
+    .st-bound-left {
+        width: 85px;
+    }
+    .st-bound-right {
+        width: 75px;
+    }
+    .st-stranger-s {
+        letter-spacing: -1px;
+        font-size: 7rem;
+    }
+    .st-stranger-s-2 {
+        font-size: 7rem;
+    }
+}
+
+@media screen and (max-width:436px) {
+    .st {
+        width: 370px!important;
+        font-size: 4rem;
+        /* border: 1px solid turquoise; */
+    }
+    .st-bottom {
+        top: -2.25rem;
+    }
+    .st-drop {
+        top: .7rem;
+    }
+    .st-bound-left {
+        top: .7rem;
+        width: 85px;
+    }
+    .st-bound-right {
+        top: .7rem;
+        width: 75px;
+    }
+    .st-stranger-s {
+        font-size: 5rem;
+    }
+    .st-stranger-s-2 {
+        font-size: 5rem;
+    }
+}
+
+@media screen and (max-width:376px) {
+    .header-container {
+        grid-template-columns: [first] 20px [middle] auto [last] 20px [end];
+    }
+    .st {
+        width: 320px!important;
+        font-size: 3.65rem;
+        /* border: 1px solid gold; */
+    }
+    .st-bottom {
+        top: -2.75rem;
+    }
+    .st-bound-left {
+        top: .2rem;
+        width: 70px;
+    }
+    .st-bound-right {
+        top: .2rem;
+        width: 60px;
+    }
+    .st-stranger-s {
+        letter-spacing: -1px;
+        font-size: 4.5rem;
+    }
+    .st-stranger-s-2 {
+        font-size: 4.5rem;
+    }
+}
+
+
+
+@media screen and (max-width:582px) {
+    .st {
+        /* width: 482px!important; */
+        /* border: 1px solid limegreen; */
+    }
 }

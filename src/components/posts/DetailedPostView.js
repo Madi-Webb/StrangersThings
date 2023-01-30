@@ -132,7 +132,7 @@ const DetailedPostView = () => {
                         { toggleMessageForm ? <MessageForm detailedPost={detailedPost} setProfileData={setProfileData} handleToggleMessageForm={handleToggleMessageForm} /> : null }
                         
                         <div>
-                            <h3>Messages:</h3>
+                            <h3 className="messages-title">Messages:</h3>
                             {
                                 profileData ? profileData.messages.map((message, idx) => {
                                     return (message.post._id == detailedPost._id ? <MessagePreview key={idx} message={message}/> : null)

@@ -39,8 +39,7 @@ const MessageForm = ({ detailedPost, handleToggleMessageForm, setProfileData }) 
         <div className='vert-center-container'>
             <form onSubmit={messageFormSubmitHandler} className="new-message-form">
 
-                <label>Message Content:</label>
-                <textarea type="text" className='content-input' value={content} onChange={(event) => setContent(event.target.value)}></textarea>
+                <textarea type="text" className='content-input' value={content} onChange={(event) => setContent(event.target.value)} placeholder="Message content"></textarea>
 
                 <br/>
 

@@ -21,12 +21,12 @@ const ProfilePostPreview = ({ post }) => {
 
 
     return (
-        <div className="post-preview">
+        <div className="profile-post-preview">
             <div className="post-title">{post.title}</div>
             <p>{post.description}</p>
-            <div className="bottom-container">
-                <div className="info"><strong>Posted:</strong>{createdDate}</div>
-                <div className="info"><strong>Messages:</strong>{post.messages.length}</div>
+            <div className="profile-post-bottom-container">
+                <div className="profile-post-info"><strong>Posted:</strong>{createdDate}</div>
+                <div className="profile-post-info"><strong>Messages:</strong>{post.messages.length}</div>
                 <button className="details-btn"><Link to={`/posts/${post._id}`} className='details-link'>More Details</Link></button>
             </div>
         </div>

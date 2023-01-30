@@ -98,3 +98,74 @@
     padding: 5px;
     border-radius: 5px;
 }
+
+.profile-post-preview {
+    width: 600px;
+    background-color: rgba(228, 235, 242, 0.75);
+    margin: 10px 5px;
+    padding: 10px 25px;
+    border: 2px solid #e4ebf2;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.profile-post-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 50px
+}
+
+.profile-post-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: rgba(24, 104, 159, 0.5);
+    border-radius: 5px;
+    font-size: 14pt;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+.profile-message-preview {
+    width: 400px;
+    background-color: rgba(228, 235, 242, 0.75);
+    margin: 10px 5px;
+    padding: 10px 25px;
+    border: 2px solid #e4ebf2;
+    border-radius: 10px;
+    color: black;
+    box-shadow: 
+    0 0 1px #bfcce0,
+    0 0 3px #6d9cbf;
+}
+
+
+/* profile conditional sizing */
+@media screen and (max-width: 660px) {
+    .profile-post-preview {
+        width: 80vw;
+    }
+    .profile-post-info {
+        flex-direction: column;
+    }
+    .profile-post-bottom-container {
+        gap: 10px
+    }
+    .profile-message-preview {
+        width: 80vw;
+    }
+}
+
+
+@media screen and (max-width:436px) {
+    .user-form {
+        margin: 40px 0px;
+        width: 80vw;
+    }
+}

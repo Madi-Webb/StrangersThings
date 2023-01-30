@@ -1,7 +1,6 @@
 
 const Logo = () => {
     return (
-        // shoutout Edelstone: https://codepen.io/edelstone/pen/NrJqZY
         <div className="st">
 
             <div className="st-top">
