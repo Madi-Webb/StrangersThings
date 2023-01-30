@@ -134,9 +134,9 @@ const DetailedPostView = () => {
                         <div>
                             <h3 className="messages-title">Messages:</h3>
                             {
-                                profileData ? profileData.messages.map((message, idx) => {
-                                    return (message.post._id == detailedPost._id ? <MessagePreview key={idx} message={message}/> : null)
-                                }) : <p>No messages to display</p>
+                                profileData && profileData.messages.length ? profileData.messages.map((message, idx) => {
+                                    return (message.post._id == detailedPost._id ? <MessagePreview key={idx} message={message}/> : <p className="no-messages" key={idx}>You have not sent any messages.</p>)
+                                }) : <p className="no-messages">No messages to display</p>
                             }
                         </div>
                     </div>
