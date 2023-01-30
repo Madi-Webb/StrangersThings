@@ -13,6 +13,7 @@ import MessagePreview from "./MessagePreview";
 const DetailedPostView = () => {
 
     const { posts, profileData, loggedIn, setProfileData } = useOutletContext();
+    console.log(profileData);
 
     const { id } = useParams();
     const [ detailedPost, setDetailedPost ] = useState();
@@ -37,8 +38,10 @@ const DetailedPostView = () => {
         try {
             const [specificPost] = await posts.filter((post) => post._id == id);
             setDetailedPost(specificPost);
+            console.log('specificPost', specificPost);
             const specificPostMessages = await profileData.messages.filter((message) => message.post._id == specificPost._id);
             setMessages(specificPostMessages);
+            console.log('messages', messages);
             await convertDates();
         } catch(error) {
             console.log(error);
@@ -142,7 +145,7 @@ const DetailedPostView = () => {
                                     {
                                         messages.length ? messages.map((message, idx) => {
                                             return <MessagePreview key={idx} message={message}/>})
-                                        : <p className="no-messages">You have not messaged this seller</p>
+                                        : detailedPost.author._id == profileData._id ? <p className="no-messages">No one has messaged you yet.</p> : <p className="no-messages">You have not messaged this seller</p>
                                     }
                                 </div> : null
                             }
